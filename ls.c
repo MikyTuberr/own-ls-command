@@ -9,15 +9,21 @@
 #include <sys/types.h>
 #include <time.h>
 
-void l_option(struct dirent *entry) {
+// Function to display detailed information about a file/directory
+void l_option(const char *path, struct dirent *entry) {
+  char full_path[512];
+  //(char* str, size_t size, const char* format, first %s,  second %s)
+  snprintf(full_path, sizeof(full_path), "%s/%s", path, entry->d_name);
+
   struct stat file_info;
-  if (stat(entry->d_name, &file_info) == 1) {
-    fprintf(stderr, "Error while reading information, about file");
+  if (stat(full_path, &file_info) == -1) {
+    fprintf(stderr, "Error while reading information about file");
+    return;
   }
 
   // Type of file
   printf((S_ISDIR(file_info.st_mode)) ? "d" : "-");
-  // Owner persmission access
+  // Owner permission access
   printf((file_info.st_mode & S_IRUSR) ? "r" : "-"); // read
   printf((file_info.st_mode & S_IWUSR) ? "w" : "-"); // write
   printf((file_info.st_mode & S_IXUSR) ? "x" : "-"); // execute/search
@@ -48,32 +54,60 @@ void l_option(struct dirent *entry) {
   printf(" %s", time_buffer);
 
   // Name of file
-  printf(" \033[1;32m%s\n\033[0m\n", entry->d_name);
+  printf(" \033[1;32m%s\n\033[0m", entry->d_name);
+}
+
+// Function to recursively print the contents of a directory
+void R_option(const char *path) {
+  DIR *dir;
+  struct dirent *entry;
+
+  dir = opendir(path);
+  if (dir == NULL) {
+    fprintf(stderr, "opendir() failed for directory '%s' (%s)\n", path,
+            strerror(errno));
+    return;
+  }
+
+  while ((entry = readdir(dir)) != NULL) {
+    if (strcmp(entry->d_name, ".") != 0 && strcmp(entry->d_name, "..") != 0) {
+      char full_path[512];
+      snprintf(full_path, sizeof(full_path), "%s/%s", path, entry->d_name);
+      printf("%s\n", full_path);
+      if (entry->d_type == DT_DIR) {
+        // If it's a directory, recursively call print_directory_contents
+        R_option(full_path);
+      }
+
+      // l_option(path, entry);
+    }
+  }
+
+  closedir(dir);
 }
 
 int main(int argc, char *argv[]) {
-  DIR *pDIR;
-  struct dirent *pDirEnt;
-  pDIR = opendir(".");
-  if (pDIR == NULL) {
-    fprintf(stderr, "%s %d: opendir() failed (%s)\n", __FILE__, __LINE__,
-            strerror(errno));
-    exit(-1);
+  const char *path;
+  
+  if (argc > 1 && strcmp(argv[1], "-l") == 0) {
+    if (argc == 3) {
+      path = argv[2];
+    } else {
+      path = ".";
+    }
+    l_option(path, NULL);
+  } else if (argc > 1 && strcmp(argv[1], "-R") == 0) {
+    if (argc == 3) {
+      path = argv[2];
+    } else {
+      path = ".";
+    }
+    R_option(path);
+  } else {
+    fprintf(stderr, "Invalid command line options\n");
+    fprintf(stderr, "Usage: %s [-l|-R] [directory]\n", argv[0]);
+    exit(EXIT_FAILURE);
   }
 
-  if (argc > 1 && strcmp(argv[1], "-l") == 0) {
-    pDirEnt = readdir(pDIR);
-    while (pDirEnt != NULL) {
-      l_option(pDirEnt);
-      pDirEnt = readdir(pDIR);
-    }
-  } else {
-    pDirEnt = readdir(pDIR);
-    while (pDirEnt != NULL) {
-      printf("%s\n", pDirEnt->d_name);
-      pDirEnt = readdir(pDIR);
-    }
-  }
-  closedir(pDIR);
   return 0;
 }
