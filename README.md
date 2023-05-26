@@ -19,8 +19,6 @@ After successful compilation, you can run the LS program by executing the follow
 <p>-R: Recursively list files and directories.</p>
 <p>-a: Include hidden files and directories in the listing.</p>
 <p>-h: Display file sizes in human-readable format.</p>
-<p>-t: Sort files by modification time (most recent first).</p>
-<p>-r: Reverse the order of the listing.</p>
 <p>-s: Display file sizes in blocks.</p>
 <p>By default, running the LS program without any options will list files and directories in the current directory.</p>
 
