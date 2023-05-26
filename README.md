@@ -11,7 +11,7 @@ Download the C source file for the LS project.
 In the directory where the source file is located, open a terminal and run the following command to compile the LS program: gcc ls.c -o ls.
 After successful compilation, you can run the LS program by executing the following command: ./ls [options] [directory]
 
-#Usage
+<h2>Usage</h2>
 
 <p>The LS program supports the following command-line options:</p>
 
@@ -24,7 +24,7 @@ After successful compilation, you can run the LS program by executing the follow
 <p>-s: Display file sizes in blocks.</p>
 <p>By default, running the LS program without any options will list files and directories in the current directory.</p>
 
-#Examples
+<h2>Examples</h2>
 <p>List files and directories in the current directory: ./ls</p>
 <p>Display detailed information about files and directories in a specific directory: ./ls -l /path/to/directory</p>
 <p>Recursively list files and directories, including hidden ones: ./ls -R -a</p>
