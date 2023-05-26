@@ -1,4 +1,4 @@
-# own-ls-command
+# Own ls command
 
 The LS project is a simple program written in C that emulates the basic functionality of the "ls" command in Unix/Linux systems. The LS program allows listing files and directories in a specified directory, as well as displaying detailed information about files, such as permissions, size, owner, group, modification date, etc.
 
