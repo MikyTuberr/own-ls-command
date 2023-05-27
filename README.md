@@ -42,5 +42,11 @@ By default, running the LS program without any options will list files and direc
 ```
 ./ls -t -h
 ```
+## Author
+MikyTuberr / Piotr
+
+Email: pio1342@gmail.com
+## Bug Reports
+please contact pio1342@gmail.com to report any bugs errors, or typos.
 ## More information
 For more information and usage details, please refer to the comments in the source code of the LS program.
