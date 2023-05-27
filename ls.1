@@ -1,0 +1,81 @@
+.TH LS 1 "May 2023" "Version 1.0" "own-ls-command"
+
+.SH NAME
+ls \- list directory contents
+
+.SH SYNOPSIS
+.B ls
+[\fIOPTIONS\fR]
+[\fIDIRECTORY\fR]
+
+.SH DESCRIPTION
+The \fBls\fR command is used to list the contents of a directory.
+
+.SH OPTIONS
+.TP
+\fB\-l\fR
+Display detailed information about each file or directory, including permissions, owner, group, file size, and last modified time.
+
+.TP
+\fB\-R\fR
+Recursively list the contents of directories, including subdirectories. This option displays the contents of each subdirectory encountered.
+
+.TP
+\fB\-a\fR
+Include hidden files and directories in the listing. By default, \fBls\fR does not display files and directories whose names begin with a dot (.\fR).
+
+.TP
+\fB\-h\fR
+Display file sizes in human-readable format.
+
+.TP
+\fB\-s\fR
+Display the size of each file in blocks.
+
+.SH DIRECTORY
+The optional \fIDIRECTORY\fR argument specifies the directory for which the contents should be listed. If no directory is provided, the current directory is used.
+
+.SH EXAMPLES
+To list the contents of the current directory:
+.B
+ls
+
+.TP
+To list the contents of a specific directory:
+.B
+ls /path/to/directory
+
+.TP
+To display detailed information about each file and directory:
+.B
+ls -l
+
+.TP
+To list the contents of directories recursively and display the size of each file in blocks:
+.B
+ls -Rs
+
+.TP
+To display detailed information about each file and directory, display the size of each file in blocks and display file sizes in human-readable format in a specific directory:
+.B
+ls -lsh /path/to/directory
+
+.SH AUTHOR
+.B
+MikyTuberr / Piotr
+
+.SH REPORTING BUGS
+.B
+Contact: pio1342@gmail.com
+
+.SH COPYRIGHT
+.B
+Copyright (c) 2023, own-ls-command
+.B
+This software is licensed under the terms of the MIT License.
+.B
+A copy of the license can be found in the LICENSE file.
+
+.SH SEE ALSO
+.B
+Go checkout my github profile: https://github.com/MikyTuberr
