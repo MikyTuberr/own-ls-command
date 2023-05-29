@@ -1,5 +1,13 @@
-// AUTHOR MikyTuberr / Piotr
-// 27.05.2023
+// Author           : Piotr Lachowicz / MikyTuberr
+// Created On       : 2023-05-27
+// Last Modified By : Piotr Lachowicz / MikyTuberr
+// Last Modified On : 2023-05-29
+// Version          : release 1.0.0
+//
+// Description      : It is an implementation of "ls" command in linux currently it is not full implementation, 
+//                    but next features are to be added in future.
+//
+// Licensed under MTI
 
 #include <dirent.h>
 #include <errno.h>
