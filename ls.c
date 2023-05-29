@@ -7,7 +7,7 @@
 // Description      : It is an implementation of "ls" command in linux currently it is not full implementation, 
 //                    but next features are to be added in future.
 //
-// Licensed under MTI
+// Licensed under MIT License
 
 #include <dirent.h>
 #include <errno.h>
