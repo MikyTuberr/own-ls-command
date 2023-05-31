@@ -18,7 +18,7 @@ The LS program supports the following command-line options:
 -h: Display file sizes in human-readable format.
 -s: Display file sizes in blocks.
 
-By default, running the LS program without any options will list files and directories in the current directory.
+Running the LS program without any options will list files and directories in the current directory.
 ```
 ## Examples
 
