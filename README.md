@@ -34,10 +34,6 @@ Running the LS program without any options will list files and directories in th
 ```
 ./ls -R -a
 ```
-### Sort files by modification time and display file sizes in human-readable format: 
-```
-./ls -t -h
-```
 ## Author
 MikyTuberr / Piotr
 
